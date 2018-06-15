@@ -1,0 +1,50 @@
+<nav class="navbar is-info">
+	<div class="navbar-brand">
+		<a class="navbar-item" href="#">
+		</a>
+	</div>
+	<div id="navbarExampleTransparentExample" class="navbar-menu">
+		<div class="navbar-start is-link">
+			<!-- ui-sref es parte de ui-router -->
+			<a class="navbar-item" ui-sref="home">
+				Home
+			</a>
+		</div>
+	</div>
+</nav>
+
+
+<div class="pd">
+	<h4>Total Comments: {{ $ctrl.count }} </h4>
+	<a class="button is-dark" id="addc" ng-click="$ctrl.show()">Add comment</a>
+	<div class="columns is-centered">
+		<div class="column is-one-third">
+			<comment-form id="comment-form" comment="$ctrl.editComment" on-create="$ctrl.create(comment)" on-update="$ctrl.update(comment)"
+			 ng-if="$ctrl.editComment">TEST</comment-form>
+		</div>
+	</div>
+
+	<div class="columns is-centered" ng-repeat="comment in $ctrl.comments | orderBy:'-likes'">
+		<div class="column is-two-thirds">
+			<div class="card">
+				<header class="card-header">
+					<p class="card-header-title">
+						<b>User:&nbsp;</b>{{comment.name}}
+					</p>
+				</header>
+				<div class="card-content">
+					<div class="content">
+						<b>Message: &nbsp;</b>{{ comment.message }}
+						<br>
+						<small> {{comment.commentdate | date:'medium'}} </small>
+					</div>
+				</div>
+				<footer class="card-footer">
+					<a class="card-footer-item" ng-click="$ctrl.update(comment, true)"><i class="fas fa-heart"></i>&nbsp;{{comment.likes}} Likes</a>
+					<a class="card-footer-item" ng-click="$ctrl.clickEdit(comment)">Edit</a>
+					<a class="card-footer-item" ng-click="$ctrl.delete(comment)">Delete</a>
+				</footer>
+			</div>
+		</div>
+	</div>
+</div>

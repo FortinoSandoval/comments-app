@@ -1,0 +1,24 @@
+<form ng-submit="$cctrl.newComment.id ? $cctrl.submitUpdate() : $cctrl.submitCreate()" class="simple-form">
+	<div class="field">
+		<div class="control">
+			<input class="input" type="text" required ng-model="$cctrl.newComment.name" placeholder="name">
+		</div>
+	</div>
+	<div class="field">
+		<div class="control">
+			<input class="input" type="email" required ng-model="$cctrl.newComment.email" placeholder="email">
+		</div>
+	</div>
+	<div class="field">
+		<div class="control">
+			<input class="input" type="text" required ng-model="$cctrl.newComment.message" placeholder="message">
+		</div>
+	</div>
+	<div class="field is-grouped">
+		<div class="control">
+			<button class="button is-link" type="submit">Submit</button>
+			<button type="button" class="button is-text" ng-click="$cctrl.cancel()">Cancel</button>
+		</div>
+	</div>
+	<pre>Comment info = {{$cctrl.newComment | json}}</pre>
+</form>
